@@ -26,4 +26,4 @@ public class Editor2 {
 		//// This function is similar to the main function of Editor1.java			
 	}
 }
-}
+

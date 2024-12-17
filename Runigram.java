@@ -182,11 +182,14 @@ public class Runigram {
 	 * of the source image.
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
-		target = scaled(target, source.length,source[0].length);
-		for(int i = 0;i<n;i++)
-		{
-			target = blend(source, target, (n-i)/n);
-			display(target);
+		Color[][] scaledTarget = scaled(target, source[0].length, source.length);
+		// Create a new 2D array with the same dimensions as the input images
+		Color[][] newImg = new Color[source.length][source[0].length];
+
+		for(int i = 0; i < n; i++){
+			double newAlpha = (n - i) / n;
+			newImg = blend(source, scaledTarget, newAlpha);
+			display(newImg);
 			StdDraw.pause(500);
 		}
 	}
