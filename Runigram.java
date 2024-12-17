@@ -135,7 +135,7 @@ public class Runigram {
 		{
 			for(int j=0;j<width;j++)
 			{
-				scaledImg[i][j] = image[(i*(int)(image.length/height))][j*(int)(image[0].length/width)];
+				scaledImg[i][j] = image[((int)(i*image.length/height))][(int)(j*image[0].length/width)];
 			}
 		}
 		return scaledImg;
