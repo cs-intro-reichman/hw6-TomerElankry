@@ -147,10 +147,11 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		int red = (int) (alpha * c1.getRed() + (1 - alpha) * c2.getRed());
-		int green = (int) (alpha * c1.getGreen() + (1 - alpha) * c2.getGreen());
-		int blue = (int) (alpha * c1.getBlue() + (1 - alpha) * c2.getBlue());
-		return new Color(red, green, blue);
+		int red1 = (int)(alpha*c1.getRed() + ((1 - alpha)*c2.getRed()));
+		int green1 = (int)((c1.getGreen()*alpha) + (c2.getGreen()*(1 - alpha)));
+		int blue1 = (int)((c1.getBlue()*alpha) + ((1 - alpha)*c2.getBlue()));
+		Color c3 = new 	Color(red1, green1, blue1);
+		return c3;
 	}
 	
 	/**
@@ -160,15 +161,13 @@ public class Runigram {
 	 * The two images must have the same dimensions.
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
-		int numRows = image1.length;
-		int numCols = image1[0].length;
-		Color[][] scaledImage = new Color[numRows][numCols];
-		for (int r = 0; r < numRows; r++) {
-			for (int c = 0; c < numCols; c++) {
-				scaledImage[r][c] = blend(image1[r][c], image2[r][c], alpha);
+		Color [][] image3=new Color[image1.length][image1[0].length];
+		for(int i=0;i<image1.length;i++){
+			for(int j=0;j<image1[0].length;j++){
+				image3[i][j]=blend(image1[i][j], image2[i][j], alpha);
 			}
-		}
-		return scaledImage;
+		}return image3;
+		
 	}
 
 	/**
